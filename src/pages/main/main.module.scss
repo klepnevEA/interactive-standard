@@ -1,0 +1,161 @@
+@import "../../common/styles/mixins";
+
+.wrapper {
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  position: sticky;
+  top: 0px;
+  background-color: var(--white-color);
+  padding: calc(var(--gap) * 4) 0;
+  height: 130px;
+}
+
+.title {
+  font-size: 60px;
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: center;
+
+  @include phone() {
+    font-size: 40px;
+  }
+}
+
+.main {
+  display: flex;
+  flex: 1 1 auto;
+  height: 100%;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.tabs {
+  display: flex;
+  flex: 1 1 auto;
+
+  @include phone() {
+    display: block;
+  }
+}
+
+.aside {
+  flex: 0 0 300px;
+  padding-right: calc(var(--gap) * 5);
+
+  @include phone() {
+    padding-right: 0;
+    flex: 1 1 auto;
+  }
+
+  &__content {
+    position: sticky;
+    top: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: calc(100vh - 130px);
+    overflow-y: auto;
+
+    @include phone() {
+      position: static;
+      display: block;
+      max-height: none;
+    }
+  }
+}
+
+.tabList {
+  @include phone() {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    padding: calc(var(--gap) * 5);
+  }
+}
+
+.question {
+  flex: 1 1 auto;
+  padding-bottom: calc(var(--gap) * 10);
+
+  &__block:not(:last-child) {
+    margin-bottom: calc(var(--gap) * 10);
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: calc(var(--gap) * 4);
+  }
+
+  &__ansver {
+    font-size: 16px;
+
+    & > span {
+      font-weight: 600;
+      float: left;
+    }
+
+    p:not(:last-child),
+    ul:not(:last-child) {
+      margin-bottom: calc(var(--gap) * 4);
+    }
+
+    ul li {
+      list-style: disc;
+      list-style-position: inside;
+    }
+  }
+}
+
+.tabItem {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 25px;
+  transition: color 0.3s;
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  user-select: none;
+  margin-bottom: calc(var(--gap) * 19);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  &.tabActive,
+  &:hover {
+    color: var(--active-color);
+
+    @include phone() {
+      box-shadow: 0px 0px 21px 0px rgba(34, 60, 80, 0.2);
+    }
+  }
+
+  @include phone() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    padding: calc(var(--gap) * 2) calc(var(--gap) * 5);
+    border-radius: 20px;
+    margin-bottom: 0;
+
+    &:not(:last-child) {
+      margin-right: calc(var(--gap) * 5);
+    }
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  cursor: pointer;
+}
